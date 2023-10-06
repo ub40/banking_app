@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
+@Component
 public class SOAPClient {
     @Value("${soap.endpoint.url}")
     private String soapEndpointUrl;

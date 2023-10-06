@@ -1,17 +1,22 @@
 package com.jrevolt.banking_app.controller;
 
+import com.jrevolt.banking_app.services.PaymentService;
 import com.jrevolt.banking_app.soap.SOAPClient;
 import com.jrevolt.banking_app.soap.response.TransactionStatusResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@RequiredArgsConstructor
-public record PaymentController(SOAPClient soapClient) {
+@RestController
+@RequestMapping("/api")
+public record PaymentController(PaymentService paymentService, SOAPClient soapClient) {
+
     @PostMapping("/initiatePayment")
-    public String initiatePayment(@RequestBody PaymentRequest paymentRequest) {
+    public String initiatePayment(@RequestBody PaymentService paymentService) {
         // Simulate payment initiation logic
-        boolean paymentSuccess = processPayment(paymentRequest);
+        boolean paymentSuccess = processPayment(paymentService);
 
         if (paymentSuccess) {
             // Call SOAP service to get transaction status
@@ -29,7 +34,7 @@ public record PaymentController(SOAPClient soapClient) {
         }
     }
 
-    private boolean processPayment(PaymentRequest paymentRequest) {
+    private boolean processPayment(PaymentService paymentService) {
         // Simulate payment processing logic
         // In a real application, this method would interact with the payment provider
         // and return true if the payment was successful, false otherwise.
