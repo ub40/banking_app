@@ -1,5 +1,12 @@
-package com.jrevolt.banking_app.soap.response;
+/*
+ * Copyright (c) 2023-2023 JRevolt.
+ * Author: Urfan Beijlerbeijli.
+ * Licensed under the MIT License
+ * All rights reserved.
+ */
 
+
+package com.jrevolt.banking_app.soap.response;
 
 import javax.xml.bind.annotation.*;
 
